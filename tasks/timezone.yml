@@ -1,7 +1,7 @@
 # file: /roles/common/tasks/timezone.yml
 ---
 - name: Check if timezone is already set correctly
-  action: shell ls -la /etc/localtime | grep '{{ coreos_timezone }}' && echo "correct" || echo "incorrect" 
+  action: shell ls -la /etc/localtime | grep -q '{{ coreos_timezone }}' && echo "correct" || echo "incorrect" 
   register: tz_check
 
 - name: Remove current timezone
