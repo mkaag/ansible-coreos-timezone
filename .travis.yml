@@ -30,8 +30,9 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Make sure the timezone is correct.
+  - date
   - >
-    date
-    | grep -q 'CET'
+    ls -la /etc/localtime
+    | grep -q 'Europe/Zurich'
     && (echo 'Timezone is configured' && exit 0)
     || (echo 'Timezone is not configured' && exit 1)
