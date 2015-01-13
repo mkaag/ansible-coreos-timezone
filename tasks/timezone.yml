@@ -1,0 +1,14 @@
+# file: /roles/common/tasks/timezone.yml
+---
+- name: Remove current timezone
+  file: >
+    path=/etc/localtime 
+    state=absent
+
+- name: Setup new timezone
+  file: >
+    src=/usr/share/zoneinfo/{{ coreos_timezone }}
+    dest=/etc/localtime
+    owner=root
+    group=root
+    state=link
