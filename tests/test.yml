@@ -1,7 +1,0 @@
----
-- hosts: localhost
-  remote_user: root
-  vars:
-    coreos_timezone: 'Europe/Zurich'
-  roles:
-    - ansible-coreos-timezone
