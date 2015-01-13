@@ -30,8 +30,8 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Make sure the timezone is correct.
+  - "sudo dpkg-reconfigure --frontend noninteractive tzdata"
   - >
-    sudo dpkg-reconfigure --frontend noninteractive tzdata;
     cat /etc/timezone 
     | grep -q 'Europe/Zurich' 
     && (echo 'Timezone is configured' && exit 0) 
