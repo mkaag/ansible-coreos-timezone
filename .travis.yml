@@ -31,7 +31,7 @@ script:
 
   # Make sure the timezone is correct.
   - >
-    dpkg-reconfigure --frontend noninteractive tzdata
-    diff -s /etc/localtime /usr/share/zoneinfo/Europe/Zurich
-    && (echo 'Timezone is configured' && exit 0)
+    dpkg-reconfigure --frontend noninteractive tzdata;
+    diff -s /etc/localtime /usr/share/zoneinfo/Europe/Zurich 
+    && (echo 'Timezone is configured' && exit 0) 
     || (echo 'Timezone is not configured' && exit 1)
