@@ -1,6 +1,8 @@
 coreos-timezone
 ===============
 
+[![Build Status](https://travis-ci.org/mkaag/ansible-coreos-timezone.svg?branch=master)](https://travis-ci.org/mkaag/ansible-coreos-timezone)
+
 Ansible role for setting timezone on CoreOS.
 
 Requirements
