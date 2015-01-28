@@ -1,14 +1,14 @@
 # file: /roles/common/tasks/timezone.yml
 ---
 - name: check if timezone is already set correctly
-  action: shell ls -la /etc/localtime | grep -q "{{ coreos_timezone }}" && echo "correct" || echo "incorrect" 
+  action: shell ls -la /etc/localtime | grep -q "{{ coreos_timezone }}" && echo "correct" || echo "incorrect"
   register: tz_check
 
 - name: remove current timezone
   file: >
-    path=/etc/localtime 
+    path=/etc/localtime
     state=absent
-  when: tz_check.stdout == "correct"
+  when: tz_check.stdout == "incorrect"
 
 - name: setup new timezone
   file: >
@@ -17,5 +17,4 @@
     owner=root
     group=root
     state=link
-  when: tz_check.stdout == "correct"
-  
+  when: tz_check.stdout == "incorrect"
