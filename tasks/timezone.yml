@@ -5,9 +5,9 @@
   register: tz_check
 
 - name: remove current timezone
-  file: >
-    path=/etc/localtime
-    state=absent
+  file: path=/etc/localtime state=absent
+  sudo: yes
+  sudo_user: root
   when: tz_check.stdout == "incorrect"
 
 - name: setup new timezone
@@ -17,4 +17,6 @@
     owner=root
     group=root
     state=link
+  sudo: yes
+  sudo_user: root
   when: tz_check.stdout == "incorrect"
